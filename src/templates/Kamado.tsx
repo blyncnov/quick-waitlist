@@ -1,6 +1,17 @@
+"use client";
+
 import React from "react";
+import { useFormState } from "react-dom";
+
+// actions
+import { joinWaitlist } from "@/actions/waitlist.actions";
 
 const Kamado = () => {
+  const [state, formAction] = useFormState(joinWaitlist, null);
+  const jkk = state;
+  const dd = typeof jkk;
+  console.log(dd);
+
   return (
     <div className="w-full h-full flex justify-center items-center waitlist_cover py-4 px-4">
       <div className="w-full md:w-[60%] bg-white/5 text-white rounded-xl p-4 backdrop-blur">
@@ -14,9 +25,9 @@ const Kamado = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-command"
               >
                 <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
@@ -36,11 +47,27 @@ const Kamado = () => {
             </div>
           </div>
 
-          <form className="waitlist-form w-full py-3 px-2 flex flex-col gap-2 shadow rounded-lg bg-white">
+          <form
+            action={formAction}
+            className="waitlist-form w-full py-3 px-2 flex flex-col gap-2 shadow rounded-lg bg-white"
+          >
             <div className="space-y-1 w-full">
               <div className="relative">
                 <input
-                  type="email"
+                  type="text"
+                  name="full_name"
+                  id="full_name"
+                  autoComplete="full_name"
+                  className="block w-full text-black rounded-lg border px-3 py-2.5 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 focus-visible:outline-none"
+                  placeholder="Jeremy Typescript (Optional)"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1 w-full">
+              <div className="relative">
+                <input
+                  type="text"
                   name="email_address"
                   id="email_address"
                   autoComplete="current-email_address"
@@ -49,15 +76,15 @@ const Kamado = () => {
                   placeholder="jeremytechie@quick-waitlist.com"
                 />
               </div>
-              <div
-                aria-live="polite"
-                aria-atomic="true"
-                className="space-y-2"
-              ></div>
+              <div aria-live="polite" aria-atomic="true" className="space-y-2">
+                <p aria-live="polite" className="text-red-500 text-sm px-2">
+                  {state?.errors?.email}
+                </p>
+              </div>
             </div>
 
             <div className="flex flex-col gap-1">
-              <button className="w-auto bg-[#000000] font-medium shadow-sm py-2 px-3 rounded-lg active:scale-105 transition-all">
+              <button className="w-auto bg-[#000000] font-medium shadow-sm py-2 px-3 rounded-lg active:scale-[1.02] transition-all">
                 Join waitlist
               </button>
             </div>

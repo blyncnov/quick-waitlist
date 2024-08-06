@@ -1,3 +1,5 @@
+"use server";
+
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
 
@@ -6,19 +8,20 @@ import prisma from "@/lib/prisma.db";
 
 // Type declaration
 type WaitlistCreateInputTypes = Prisma.WaitlistCreateInput;
+// const initialState = joinWaitlistInitialState;
 
 const waitlistSchema = z.object({
-  email: z.string().email(),
+  email: z.string().email({ message: "Please enter a valid email address" }),
   fullName: z.string().optional(),
 });
 
 // TODO:  JOIN WAITLIST ACTION
-export const joinWaitlist = async (prevState: any, formData: FormData) => {
+export const joinWaitlist = async (_prevState: any, formData: FormData) => {
   try {
     // Safe Parse Form
     const validatedFields = waitlistSchema.safeParse({
-      email: formData.get("email"),
-      fullName: formData.get("fullName"),
+      email: formData.get("email_address"),
+      fullName: formData.get("full_name"),
     });
 
     // Check if not validated
@@ -32,10 +35,26 @@ export const joinWaitlist = async (prevState: any, formData: FormData) => {
     const { email, fullName } = validatedFields.data;
 
     // Create Waitlist
+    const IsUserAlreadyJoinedWaitlist: WaitlistCreateInputTypes | null =
+      await prisma.waitlist.findUnique({
+        where: {
+          email: email as string,
+        },
+      });
+
+    if (IsUserAlreadyJoinedWaitlist && IsUserAlreadyJoinedWaitlist !== null) {
+      return {
+        status: "error",
+        message: "You are already on the waitlist!",
+        data: null,
+      };
+    }
+
+    // Create Waitlist
     const newWaitlist: WaitlistCreateInputTypes = await prisma.waitlist.create({
       data: {
-        email: email,
-        fullName: fullName,
+        email: email as string,
+        fullName: fullName ? fullName : undefined,
       },
     });
 
@@ -45,10 +64,7 @@ export const joinWaitlist = async (prevState: any, formData: FormData) => {
       data: newWaitlist,
     };
   } catch (error) {
-    return {
-      status: "error",
-      message: error,
-      data: null,
-    };
+    console.log(error);
+    throw new Error("Internal Error! Sorry its Our fault");
   }
 };

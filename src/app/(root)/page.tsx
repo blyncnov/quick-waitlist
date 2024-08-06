@@ -23,20 +23,3 @@ export default async function Home() {
     </main>
   );
 }
-
-// <main className="w-full p-6">
-//   <h1>Hello Waitlist - {total_waitlisted}</h1>
-//   <br />
-//   <h2>All Users on Waitlist</h2>
-//   <div>
-//     {waitlists ? (
-//       waitlists.map((user) => {
-//         return <li key={user.email}>{user.email}</li>;
-//       })
-//     ) : (
-//       <>
-//         <p>Loading ...</p>
-//       </>
-//     )}
-//   </div>
-// </main>

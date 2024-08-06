@@ -1,3 +1,5 @@
+import { NextRequest, NextResponse } from "next/server";
+
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
 
@@ -14,8 +16,8 @@ const waitlistSchema = z.object({
   email: z.string(),
 });
 
-export async function POST(response: Response) {
-  const body: WaitlistCreateInputTypes = await response.json();
+export async function POST(request: NextResponse) {
+  const body: WaitlistCreateInputTypes = await request.json();
   const parsedBody = waitlistSchema.parse(body);
 
   try {
@@ -29,11 +31,11 @@ export async function POST(response: Response) {
     });
 
     if (error) {
-      return Response.json({ error }, { status: 500 });
+      return NextResponse.json({ error }, { status: 500 });
     }
 
-    return Response.json(data);
+    return NextResponse.json(data);
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    return NextResponse.json({ error }, { status: 500 });
   }
 }

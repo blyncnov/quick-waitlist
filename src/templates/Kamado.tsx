@@ -25,11 +25,11 @@ const Kamado = () => {
 
             <div className="flex flex-col gap-2">
               <h2 className="text-3xl md:text-4xl font-bold capitalize leading-relaxed text-primary">
-                Early Access Registration!
+                Get Early Access!
               </h2>
 
               <p className="font-normal text-base md:text-lg opacity-80 my-1 leading-normal">
-                Create excitement, generates buzz, and connects you with early
+                Quick-waitlist Create excitement and connects you with early
                 adopters who provide valuable feedback and become loyal brand
                 ambassadors.
               </p>

@@ -8,10 +8,10 @@ export const showNotification = (
 ) => {
   // use a random type of notification
   toast(message, {
-    icon: errorType === "success" ? "👏" : "❌",
+    icon: errorType === "success" ? "⚡︎" : "❌",
     style: {
       background: isDark ? "#333" : "#ffffff",
-      color: errorType === "success" ? "#6533FF" : "#F05152",
+      color: errorType === "success" ? "#000" : "#F05152",
     },
   });
 };

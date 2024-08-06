@@ -3,9 +3,13 @@
 import React, { useEffect } from "react";
 import { useFormState } from "react-dom";
 
-// actions
-import { joinWaitlist } from "@/actions/waitlist.actions";
+// @components
 import { SubmitButton } from "@/components/submit-button";
+
+// @actions - Waitlist
+import { joinWaitlist } from "@/actions/waitlist.actions";
+
+// @lib - Notification
 import showNotification from "@/lib/showNotification";
 
 const Kamado = () => {

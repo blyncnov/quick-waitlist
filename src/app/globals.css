@@ -16,18 +16,22 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+body {
+  color: #010008;
+  background: #ffff;
+}
+
+.waitlist_cover {
+  width: 100%;
+  height: 100%;
+  background: url("/layers/bg2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

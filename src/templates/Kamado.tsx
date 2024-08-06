@@ -1,16 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormState } from "react-dom";
 
 // actions
 import { joinWaitlist } from "@/actions/waitlist.actions";
 import { SubmitButton } from "@/components/submit-button";
+import showNotification from "@/lib/showNotification";
 
 const Kamado = () => {
+  const formRef = React.useRef<HTMLFormElement>(null);
   const [state, formAction] = useFormState(joinWaitlist, null);
 
-  console.log(state);
+  useEffect(() => {
+    if (state?.status === "ok") {
+      // Clear Email Field
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+
+      // Show Notification
+      showNotification(state.message, "success");
+      // END
+    } else if (state?.status == "error") {
+      // Show Notification
+      showNotification(state.message, "success");
+      // END
+    } else {
+      return;
+    }
+  }, [state]);
 
   return (
     <div className="w-full h-full flex justify-center items-center waitlist_cover py-4 px-4">
@@ -48,6 +67,7 @@ const Kamado = () => {
           </div>
 
           <form
+            ref={formRef}
             action={formAction}
             className="waitlist-form w-full py-3 px-2 flex flex-col gap-2 shadow rounded-lg bg-white"
           >

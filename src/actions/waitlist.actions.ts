@@ -55,6 +55,19 @@ export const joinWaitlist = async (_prevState: any, formData: FormData) => {
       },
     });
 
+    // Send waitlist email to the new user!
+    await fetch("http://localhost:3000/api/send", {
+      method: "POST",
+      headers: {
+        contentType: "application/json",
+      },
+      body: JSON.stringify({
+        email: newWaitlist.email,
+      }),
+    }).then((res) => {
+      console.log(res);
+    });
+
     return {
       status: "ok",
       message: "Success",

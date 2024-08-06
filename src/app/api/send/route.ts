@@ -16,7 +16,7 @@ const waitlistSchema = z.object({
   email: z.string(),
 });
 
-export async function POST(request: NextResponse) {
+export async function POST(request: NextRequest) {
   const body: WaitlistCreateInputTypes = await request.json();
   const parsedBody = waitlistSchema.parse(body);
 

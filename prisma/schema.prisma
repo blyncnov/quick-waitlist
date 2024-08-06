@@ -17,5 +17,4 @@ model Waitlist {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   email     String   @unique
-  fullName  String?
 }

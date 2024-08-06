@@ -12,7 +12,6 @@ type WaitlistCreateInputTypes = Prisma.WaitlistCreateInput;
 
 const waitlistSchema = z.object({
   email: z.string(),
-  fullName: z.string().optional(),
 });
 
 export async function POST(response: Response) {
@@ -26,7 +25,6 @@ export async function POST(response: Response) {
       subject: "Welcome onboard!",
       react: WaitlistEmailTemplate({
         email: parsedBody.email as string,
-        fullName: parsedBody.fullName as string,
       }),
     });
 

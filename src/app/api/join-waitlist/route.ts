@@ -10,7 +10,6 @@ type WaitlistCreateInputTypes = Prisma.WaitlistCreateInput;
 
 const waitlistSchema = z.object({
   email: z.string(),
-  fullName: z.string().optional(),
 });
 
 export async function POST(request: Request) {
@@ -24,7 +23,6 @@ export async function POST(request: Request) {
     const newWaitlist: WaitlistCreateInputTypes = await prisma.waitlist.create({
       data: {
         email: parsedBody.email,
-        fullName: parsedBody.fullName,
       },
     });
 

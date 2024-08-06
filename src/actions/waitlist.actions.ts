@@ -12,7 +12,6 @@ type WaitlistCreateInputTypes = Prisma.WaitlistCreateInput;
 
 const waitlistSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
-  fullName: z.string().optional(),
 });
 
 // TODO:  JOIN WAITLIST ACTION
@@ -21,7 +20,6 @@ export const joinWaitlist = async (_prevState: any, formData: FormData) => {
     // Safe Parse Form
     const validatedFields = waitlistSchema.safeParse({
       email: formData.get("email_address"),
-      fullName: formData.get("full_name"),
     });
 
     // Check if not validated
@@ -32,7 +30,7 @@ export const joinWaitlist = async (_prevState: any, formData: FormData) => {
     }
 
     // Validated Fields
-    const { email, fullName } = validatedFields.data;
+    const { email } = validatedFields.data;
 
     // Create Waitlist
     const IsUserAlreadyJoinedWaitlist: WaitlistCreateInputTypes | null =
@@ -54,7 +52,6 @@ export const joinWaitlist = async (_prevState: any, formData: FormData) => {
     const newWaitlist: WaitlistCreateInputTypes = await prisma.waitlist.create({
       data: {
         email: email as string,
-        fullName: fullName ? fullName : undefined,
       },
     });
 

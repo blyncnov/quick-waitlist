@@ -5,12 +5,12 @@ import { useFormState } from "react-dom";
 
 // actions
 import { joinWaitlist } from "@/actions/waitlist.actions";
+import { SubmitButton } from "@/components/submit-button";
 
 const Kamado = () => {
   const [state, formAction] = useFormState(joinWaitlist, null);
-  const jkk = state;
-  const dd = typeof jkk;
-  console.log(dd);
+
+  console.log(state);
 
   return (
     <div className="w-full h-full flex justify-center items-center waitlist_cover py-4 px-4">
@@ -55,19 +55,6 @@ const Kamado = () => {
               <div className="relative">
                 <input
                   type="text"
-                  name="full_name"
-                  id="full_name"
-                  autoComplete="full_name"
-                  className="block w-full text-black rounded-lg border px-3 py-2.5 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 focus-visible:outline-none"
-                  placeholder="Jeremy Typescript (Optional)"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-1 w-full">
-              <div className="relative">
-                <input
-                  type="text"
                   name="email_address"
                   id="email_address"
                   autoComplete="current-email_address"
@@ -77,16 +64,21 @@ const Kamado = () => {
                 />
               </div>
               <div aria-live="polite" aria-atomic="true" className="space-y-2">
-                <p aria-live="polite" className="text-red-500 text-sm px-2">
-                  {state?.errors?.email}
-                </p>
+                {state?.errors?.email &&
+                  state.errors.email.map((msg, index) => {
+                    return (
+                      <p key={index} className="text-red-500 text-sm px-2 pb-1">
+                        {msg}
+                      </p>
+                    );
+                  })}
               </div>
             </div>
 
             <div className="flex flex-col gap-1">
-              <button className="w-auto bg-[#000000] font-medium shadow-sm py-2 px-3 rounded-lg active:scale-[1.02] transition-all">
-                Join waitlist
-              </button>
+              <SubmitButton>
+                <span>Join waitlist</span>
+              </SubmitButton>
             </div>
           </form>
         </div>

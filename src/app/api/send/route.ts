@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "Quick Waitlist <onboarding@resend.dev>",
+      from: "Quick Waitlist <info@jeremytechie.com>",
       to: [parsedBody.email],
       subject: "Welcome onboard!",
       react: WaitlistEmailTemplate({

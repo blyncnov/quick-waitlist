@@ -5,6 +5,7 @@ import { z } from "zod";
 
 // Prisma_db
 import prisma from "@/lib/prisma.db";
+import { sendWaitlistEmail } from "./sender.actions";
 
 // Type declaration
 type WaitlistCreateInputTypes = Prisma.WaitlistCreateInput;
@@ -54,20 +55,26 @@ export const joinWaitlist = async (_prevState: any, formData: FormData) => {
       },
     });
 
-    if (newWaitlist && newWaitlist.email) {
-      // Send waitlist email to the new user!
-      const emailResponse = await fetch("api/send", {
-        method: "POST",
-        headers: {
-          contentType: "application/json",
-        },
-        body: JSON.stringify({
-          email: newWaitlist.email,
-        }),
-      });
+    if (!newWaitlist.email) {
+      return {
+        status: "error",
+        message: "Waitlist email failed to send!",
+        data: null,
+      };
+    }
 
-      const emailJson = await emailResponse.json();
-      console.log(emailJson.id);
+    // Build payload!
+    const payload = {
+      email: newWaitlist.email,
+    };
+
+    // Send Mail
+    const { status } = await sendWaitlistEmail(payload);
+
+    if (status === "error") {
+      console.log("Waitlist email failed to send!");
+    } else {
+      console.log("Waitlist email sent successfully!");
     }
 
     // Success - Response

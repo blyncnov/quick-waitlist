@@ -56,7 +56,7 @@ export const joinWaitlist = async (_prevState: any, formData: FormData) => {
 
     if (newWaitlist && newWaitlist.email) {
       // Send waitlist email to the new user!
-      const emailResponse = await fetch("http://localhost:3000/api/send", {
+      const emailResponse = await fetch("api/send", {
         method: "POST",
         headers: {
           contentType: "application/json",

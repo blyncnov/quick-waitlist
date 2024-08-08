@@ -2,13 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
+import { Prisma } from "@prisma/client";
 
 // Framer motion
 import { motion } from "framer-motion";
 
 // Image
 import FakeUserImage from "../../../../../public/wait_chair.jpg";
-import { Prisma } from "@prisma/client";
 
 interface userProps extends Prisma.WaitlistCreateInput {
   id: number;

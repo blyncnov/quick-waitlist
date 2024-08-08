@@ -2,12 +2,10 @@
 
 Quick Waitlist is a simple boilerplate for creating a fast waitlist demo website in less than 2 minutes. Users can choose from different types of templates to suit their needs.
 
-<div align="center">
-  <br />
-    <a href="https://quick-waitlist-code.vercel.app/" target="_blank">
+<div align="center" style="width: 100%">
+    <a style="width: 100%" href="https://quick-waitlist-code.vercel.app/" target="_blank">
       <img src="https://github.com/user-attachments/assets/d287f001-e8fd-47ed-9dac-fca3252e403c" alt="Quick Waitlist Banner">
     </a>
-  <br />
   </div>
 
 ## Table of Contents

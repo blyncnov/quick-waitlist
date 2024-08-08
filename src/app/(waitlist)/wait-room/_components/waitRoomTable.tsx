@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Prisma } from "@prisma/client";
 
 interface waitListProps extends Prisma.WaitlistCreateInput {
@@ -43,9 +44,7 @@ const WaitRoomTable = ({ data }: { data: waitListProps[] }) => {
                       <th
                         scope="col"
                         className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
-                      >
-                        Status
-                      </th>
+                      ></th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
@@ -76,8 +75,13 @@ const WaitRoomTable = ({ data }: { data: waitListProps[] }) => {
                           <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {data.email}
                           </td>
-                          <td className="py-4 px-6 text-sm font-medium text-green-500 whitespace-nowrap dark:text-white">
-                            Active
+                          <td className="py-4 px-6 text-sm font-medium whitespace-nowrap dark:text-white">
+                            <Link
+                              href={`/wait-room/${data.id}`}
+                              className="underline text-gray-600"
+                            >
+                              View
+                            </Link>
                           </td>
                         </tr>
                       );

@@ -1,10 +1,10 @@
 import React from "react";
 
-// Component
-import WaitRoomTable from "./_components/waitRoomTable";
-
 // prisma_db
 import prisma from "@/lib/prisma.db";
+
+// Component
+import WaitRoomTable from "./_components/waitRoomTable";
 
 const WaitRoom = async () => {
   const waitlist = await prisma.waitlist.findMany();

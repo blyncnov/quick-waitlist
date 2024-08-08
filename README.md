@@ -1,12 +1,34 @@
 # Quick Waitlist
 
-Quick Waitlist is a simple boilerplate for creating a fast waitlist demo website in less than 2 minutes.
+Quick Waitlist is a simple boilerplate for creating a fast waitlist demo website in less than 2 minutes. Users can choose from different types of templates to suit their needs.
+
+## Table of Contents
+
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Development Server](#running-the-development-server)
+  - [Configuration](#configuration)
+  - [Generating Prisma Client](#generating-prisma-client)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## Tech Stack
 
-- **Next.js** (server actions)
-- **Postgres** (database)
-- **Resend**
+- **Next.js** (server actions): For building the frontend and backend of the application.
+- **Postgres** (database): For robust and scalable data storage.
+- **Resend**: For managing email notifications.
+
+## Features
+
+- Quick setup and deployment.
+- Server-side rendering with Next.js.
+- Efficient database management with Postgres.
+- Easy email notification integration with Resend.
 
 ## Getting Started
 
@@ -54,13 +76,41 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### Configuration
+
+1. **Create a `.env` file in the root directory** and add the following environment variables:
+
+   ```plaintext
+   # Connect to Railway via connection pooling
+   DATABASE_URL= <Postgres_Database_URL>
+
+   # Resend API_KEY
+   RESEND_API_KEY =  <RESEND_API_KEY>
+   ```
+
+### Generating Prisma Client
+
+After configuring your environment variables, you need to generate the Prisma client:
+
+```bash
+npx prisma generate
+```
+
 ## Documentation
 
 Complete documentation is coming soon. Stay tuned for updates!
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request for any bugs or feature requests.
+Contributions are welcome! Please follow these guidelines:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a pull request.
+
+Please open an issue or submit a pull request for any bugs or feature requests.
 
 ## License
 

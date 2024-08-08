@@ -12,28 +12,15 @@ const WaitListFloor = async ({ params }: { params: { id: number } }) => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto p-6 flex flex-col gap-5 justify-center text-center items-center">
+    <div className="relative max-w-6xl mx-auto py-4 px-6 flex flex-col gap-5 justify-center text-center items-center">
       {user ? (
-        <>
-          <div className="w-full">
-            <div>
-              <h2 className="text-xl md:text-3xl font-medium">
-                Here is your waitlist Information
-              </h2>
-              <p className="text-base">
-                Stay tuned for updates and further instructions as we prepare to
-                launch our exciting new service.
-              </p>
-            </div>
-            <div className="w-full flex justify-center items-center mt-10">
-              <WaitlistCard user={user} />
-            </div>
-          </div>
-        </>
+        <div className="w-full flex justify-center items-center">
+          <WaitlistCard user={user} />
+        </div>
       ) : (
-        <>
+        <div className="w-full flex justify-center items-center">
           <h2>Loading...</h2>
-        </>
+        </div>
       )}
     </div>
   );

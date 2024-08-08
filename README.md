@@ -8,6 +8,7 @@ Quick Waitlist is a simple boilerplate for creating a fast waitlist demo website
       <img src="https://github.com/user-attachments/assets/d287f001-e8fd-47ed-9dac-fca3252e403c" alt="Quick Waitlist Banner">
     </a>
   <br />
+  </div>
 
 ## Table of Contents
 

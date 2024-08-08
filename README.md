@@ -18,7 +18,6 @@ Quick Waitlist is a simple boilerplate for creating a fast waitlist demo website
   - [Running the Development Server](#running-the-development-server)
   - [Configuration](#configuration)
   - [Generating Prisma Client](#generating-prisma-client)
-- [Documentation](#documentation)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -102,10 +101,6 @@ After configuring your environment variables, you need to generate the Prisma cl
 ```bash
 npx prisma generate
 ```
-
-## Documentation
-
-Complete documentation is coming soon. Stay tuned for updates!
 
 ## Contributing
 

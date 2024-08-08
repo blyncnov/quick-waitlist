@@ -54,6 +54,22 @@ export const joinWaitlist = async (_prevState: any, formData: FormData) => {
       },
     });
 
+    if (newWaitlist && newWaitlist.email) {
+      // Send waitlist email to the new user!
+      const emailResponse = await fetch("api/send", {
+        method: "POST",
+        headers: {
+          contentType: "application/json",
+        },
+        body: JSON.stringify({
+          email: newWaitlist.email,
+        }),
+      });
+
+      const emailJson = await emailResponse.json();
+      console.log(emailJson.id);
+    }
+
     // Success - Response
     return {
       status: "ok",

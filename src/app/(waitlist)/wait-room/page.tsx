@@ -11,7 +11,7 @@ const WaitRoom = async () => {
   const waitlist_count = await prisma.waitlist.count();
 
   return (
-    <div className="max-w-6xl mx-auto py-6 flex flex-col gap-5">
+    <div className="max-w-6xl mx-auto py-6 px-4 md:px-0 flex flex-col gap-5">
       <div>
         <h2 className="text-3xl">Your Waitlist Room ({waitlist_count})</h2>
         <p className="text-base mt-1">

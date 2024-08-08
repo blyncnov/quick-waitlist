@@ -29,6 +29,7 @@ Quick Waitlist is a simple boilerplate for creating a fast waitlist demo website
 - Server-side rendering with Next.js.
 - Efficient database management with Postgres.
 - Easy email notification integration with Resend.
+- Multiple templates to choose from.
 
 ## Getting Started
 
@@ -118,4 +119,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any questions or inquiries, please contact [bholuwatife00@gmail.com](mailto:bholuwatife00@gmail.com).
+For any questions or inquiries, please contact [bholuwatife00@gmail.com](mailto:bholuwatife00@gmail.com). You can also visit my [portfolio website](https://jeremytechie.com/) or connect with me on [Twitter](https://x.com/jeremytechie).
